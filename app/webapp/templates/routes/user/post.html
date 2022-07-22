@@ -1,0 +1,31 @@
+{% extends "components/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "components/macro/paging.html" as paging %}
+
+{% block title %}Flasky - Post{% endblock %}
+
+{% block page_content %}
+{% include 'components/include/user/posts.html' %}
+<h4 id="comments">Comments</h4>
+{% if current_user.can(Permission.COMMENT) %}
+<div class="comment-form">
+    {{ wtf.quick_form(form) }}
+</div>
+{% endif %}
+{% include 'components/include/user/comments.html' %}
+{% if pagination %}
+<div class="pagination">
+    {{ paging.pagination_widget(pagination, '.post', fragment='#comments', id=posts[0].id) }}
+</div>
+{% endif %}
+<script type="text/javascript">
+    // 添加页码加载模块
+    window.onload = function(){
+        // 批量获取用户头像
+        user_avatar_batch("{{ url_for('user.get_batch_avatar') }}");
+        // 批量获取用户评论区头像
+        user_avatar_comment_batch("{{ url_for('user.get_batch_avatar') }}");
+    }
+</script>
+{% endblock %}
+

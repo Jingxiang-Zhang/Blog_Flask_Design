@@ -1,0 +1,1 @@
+from .v1_0 import api_blueprint_v1_0

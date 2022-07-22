@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>referer</title>
+</head>
+<body>
+    测试访问来源，您的访问来源为：{{referer}}
+    <br>
+    {% if success==False %}
+    请尝试将访问来源变为 www.baidu.com
+    {% else %}
+    恭喜尝试成功
+    {% endif %}
+</body>
+</html>

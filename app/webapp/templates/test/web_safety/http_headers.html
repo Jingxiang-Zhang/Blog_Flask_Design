@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div>
+        You IP headers is: <br><br>
+        {% for line in http_headers %}
+            {{line}}
+            <br>
+        {% endfor %}
+        <hr/>
+        Http last hop ip(after NAT): {{ip}}
+        <br>
+        user proxy list: {{user_hop}}
+        <br>
+        事实证明，判断用户ip、禁封用户ip，由于NAT的缘故会导致错误判断，因此只有用户账号才更加准确
+    </div>
+</div>
+</body>
+</html>
